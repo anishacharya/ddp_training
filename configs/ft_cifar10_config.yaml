@@ -1,0 +1,43 @@
+ {
+      "data_config":
+      {
+          "data_set": "cifar10",
+          "num_classes": 10,
+
+          "train_batch_size": 128,
+          "test_batch_size": 1000,
+          "num_worker": 5
+      },
+
+      "training_config":
+      {
+          "epochs": 200,
+          "eval_freq": 1,
+          "save_model_freq": 9999,
+          "model_arch": "cifar_resnet18",   # cifar_resnet18 /
+          "proj_dim": 128,
+
+          "loss_fn": "ce",                  # ce
+          "temp": 0.5,                      # for contrastive losses
+
+          "optimizer": "SGD",
+          "betas": [0.5, 0.99],
+          "momentum": 0.9,
+          "nesterov": true,
+          "amsgrad": false,
+
+          "lr0": 0.1,
+          "reg": 0.0005,
+
+          "lrs": 'multi_step',
+
+          "step_size": 50,                  # for step lrs
+          "milestones": [20, 60, 120],      # for multistep lrs
+          "gamma": 0.2,                     # for step and multistep lrs
+
+          "T_max": 200,                     # for cosine lrs
+          "eta_min": 0,                     # for cosine lrs
+          "T0": 50,                         # for cosine lrs
+          "T_mult": 1                       # for cosine lrs
+    }
+}
